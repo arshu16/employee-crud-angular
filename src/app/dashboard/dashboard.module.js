@@ -3,7 +3,8 @@
 
   angular
     .module('dashboard', [
-      'home'
+      'home',
+      'adminActions'
       ])
     .config(['$stateProvider', function routerConfig($stateProvider) {
       $stateProvider

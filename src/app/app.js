@@ -11,7 +11,7 @@
     ])
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
       function ($stateProvider, $urlRouterProvider, $locationProvider) {
-      // $locationProvider.html5Mode({ //Remove the hashbangs, #! killing you
+      // $locationProvider.hashPrefix('').html5Mode({ //Remove the hashbangs, #! killing you
       //   enabled: true,
       //   requireBase: true
       // });
