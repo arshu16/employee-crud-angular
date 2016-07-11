@@ -3,7 +3,7 @@
 
   angular
     .module('home', [])
-    .config(['$stateProvider', function routerConfig($stateProvider) {
+    .config(['$stateProvider', function ($stateProvider) {
 
       $stateProvider
         .state('dashboard.home', {

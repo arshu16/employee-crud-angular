@@ -3,9 +3,9 @@
 
   angular
   .module('adminActions')
-  .controller('homeController', ['$scope', function ($scope) { 
+  .controller('adminActionsController', ['$scope', function ($scope) { 
     
-   
+   window.console.log('This is the scope', $scope);
   }]);
 
 })();
