@@ -1,0 +1,24 @@
+<!doctype html>
+<html ng-app="employeeCrud">
+  <head>
+    <title>Tribe</title>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body >
+    <div class="app-container" ui-view></div>
+    <script type="text/javascript" src="libs/angular.min.js"></script>
+    <script type="text/javascript" src="libs/angular-ui-router.min.js"></script>
+
+    <!-- HOME MODULE -->
+    <script type="text/javascript" src="src/app/dashboard/home/home.module.js"></script>
+    <script type="text/javascript" src="src/app/dashboard/home/home.controller.js"></script>
+    <!-- @@@@@@@@@@@ --> 
+    <!-- DASHBOARD MODULE -->
+    <script type="text/javascript" src="src/app/dashboard/dashboard.module.js"></script>
+    <!-- @@@@@@@@@@@@@@@@ -->
+    <script type="text/javascript" src="src/app/app.js"></script>
+  </body>
+</html>
