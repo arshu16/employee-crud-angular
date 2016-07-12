@@ -20,3 +20,7 @@
 .details-section .info-container .more-info{
 	margin: 0 20px;
 }
+
+.details-section .info-container .more-info .address-field{
+	display: block;
+}

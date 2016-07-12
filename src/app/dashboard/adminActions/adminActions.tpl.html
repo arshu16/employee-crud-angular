@@ -73,11 +73,11 @@
 	    <span class="error" ng-show="employeeForm.empOtherCity.$error.required && !employeeForm.empOtherCity.$pristine">City is Required</span>
 	  </div>
 
-	  <div class="address-container" ng-repeat="addressField in employee.address track by $index">
+	  <div class="address-container" ng-class="{'inline-flex': $last}" ng-repeat="addressField in employee.address track by $index">
       <label><input type="text" placeholder="Address line {{$index+1}}" ng-model="employee.address[$index]" name="addressField{{$index}}" required>
       </label>
       <span class="error" ng-show="employeeForm.addressField{{$index}}.$error.required && !employeeForm.addressField{{$index}}.$pristine">Address field is Required</span>
-      <button ng-click="addAddressField()" ng-if="$index === $last">Add</button>
+      <button class="add-address-button" ng-click="addAddressField()" ng-if="$last">Add</button>
     </div>
 
     <input type="number" name="empPinCode" ng-model="employee.pinCode" placeholder="Pin Code" ng-pattern="/^[0-9]+$/" required/>

@@ -59,8 +59,9 @@
 	<div class="info-container">
 		<span class="info-heading">ADDRESS: &nbsp; </span> 
 		<div class="more-info">
-			<span ng-repeat="address in employee.address track by $index">
-				{{address}} <span ng-if="$index !== $last">, &nbsp;</span>
+			<span class="address-field" ng-repeat="address in employee.address track by $index">
+				{{address}} <span ng-if="!$last">,</span>
+				<span ng-if="$last"> &nbsp; - &nbsp; {{employee.pinCode}}</span>
 			</span>
 		</div>
 	</div>

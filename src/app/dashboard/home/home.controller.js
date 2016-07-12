@@ -12,6 +12,22 @@
         id: employee.id
       });
     };
+
+    $scope.deleteEmp = function(e, employee) {
+      e.stopPropagation();
+      if(confirm('Are you sure you want to delete this employee?')) {
+        var employeeList = employeeRecordsCache.getEmployeeRecords();
+        var index = employeeList.findIndex(function(emp){
+          return emp.id == employee.id;
+        });
+        if(index === -1) {
+          alert('Catastrophic error');
+        } 
+        employeeList.splice(index, 1);
+        employeeRecordsCache.setEmployeeRecords(employeeList);
+        getEmployeeData();
+      }
+    };
     
     function getEmployeeData() {
       var employees = employeeRecordsCache.getEmployeeRecords();

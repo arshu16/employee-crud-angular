@@ -17,6 +17,15 @@
   margin: 5px 0;
 }
 
+.form-container .address-container .add-address-button {
+  margin: 5px 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 500px;
+  background: #dedede;
+  color: #FFF;
+}
+
 .form-container .employee-form .grad-container {
   border: 1px solid #dedede;
   width: 25%;

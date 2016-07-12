@@ -31,6 +31,10 @@
       return toBeReturned || appConstants.NEW_FORM_DATA;
     }
 
+    $scope.addAddressField = function() {
+      $scope.employee.address.push('');
+    };
+
     //Submit form
     $scope.confirmEmployee = function(e) {
     	e.preventDefault();
