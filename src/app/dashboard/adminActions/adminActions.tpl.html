@@ -1,6 +1,6 @@
 <div class="form-container">
 	<span class="form-heading"> Employee Details </span>
-	<form name="employeeForm" ng-submit="confirmEmployee()" novalidate class="employee-form">
+	<form name="employeeForm" ng-submit="confirmEmployee($event)" novalidate class="employee-form">
 		<input type="text" name="empId" ng-model="employee.id" placeholder="ID" ng-pattern="/^[0-9]+$/" required/>
 		<span class="error" ng-show="employeeForm.empId.$error.required && !employeeForm.empId.$pristine">ID is required</span>
 		<span class="error" ng-show="employeeForm.empId.$error.pattern">ID should be a number only </span>
@@ -9,7 +9,7 @@
     <span class="error" ng-show="employeeForm.empEmail.$error.email">Enter a Valid Email</span>
     <span class="error" ng-show="employeeForm.empEmail.$error.required && !employeeForm.empEmail.$pristine">Email is Required</span>
 
-    <input type="text" ng-model="employee.name" ng-pattern="/^[a-zA-Z]+$/" name="empName" placeholder="Name" required />    
+    <input type="text" ng-model="employee.name" ng-pattern="/^\w+(\s+\w+)*$/" name="empName" placeholder="Name" required />    
     <span class="error" ng-show="employeeForm.empName.$error.pattern">Name must be only letters</span>
     <span class="error" ng-show="employeeForm.empName.$error.required && !employeeForm.empName.$pristine">Name is Required</span>
 
@@ -17,78 +17,79 @@
 		<span class="error" ng-show="employeeForm.empContactNumber.$error.required && !employeeForm.empContactNumber.$pristine">Contact is required</span>
 		<span class="error" ng-show="employeeForm.empContactNumber.$error.pattern">Phone should be a number only </span>
 
-		<input type="text" ng-model="employee.department" ng-pattern="/^[a-zA-Z]+$/" name="empDepartment" placeholder="Department" required />    
-    <span class="error" ng-show="employeeForm.empDepartment.$error.pattern">Department must be only letter and number</span>
+		<input type="text" ng-model="employee.department" ng-pattern="/^\w+(\s+\w+)*$/" name="empDepartment" placeholder="Department" required />    
+    <span class="error" ng-show="employeeForm.empDepartment.$error.pattern">Department must be only letters</span>
     <span class="error" ng-show="employeeForm.empDepartment.$error.required && !employeeForm.empDepartment.$pristine">Department is Required</span>
 
-    <input type="text" ng-model="employee.designation" ng-pattern="/^[a-zA-Z]+$/" name="empDesignation" placeholder="Designation" required />    
-    <span class="error" ng-show="employeeForm.empDesignation.$error.pattern">Designation must be only letter and number</span>
+    <input type="text" ng-model="employee.designation" ng-pattern="/^\w+(\s+\w+)*$/" name="empDesignation" placeholder="Designation" required />    
+    <span class="error" ng-show="employeeForm.empDesignation.$error.pattern">Designation must be only letters</span>
     <span class="error" ng-show="employeeForm.empDesignation.$error.required && !employeeForm.empDesignation.$pristine">Designation is Required</span>
 
     <select ng-model="employee.qualification"
-	    ng-options="qualification in allQualifications" name="qualificationSelect">
+	    ng-options="key as value for (key,value) in allQualifications" name="qualificationSelect" required>
 	    <option value="">Select Qualification</option>
 	  </select>
-	  <span class="error" ng-show="employeeForm.qualificationSelect.$error.required">Qualification is required</span>
+	  <span class="error" ng-show="employeeForm.qualificationSelect.$error.required  && !employeeForm.qualificationSelect.$pristine"">Qualification is required</span>
 
-	  <div class="grad-container">
-	  	<span> Grad </span>
-	  	<input type="text" ng-model="employee.gradCourse" ng-pattern="/^[a-zA-Z]+$/" name="empGradCourse" placeholder="Course" required />    
-	    <span class="error" ng-show="employeeForm.empGradCourse.$error.pattern">Grad course must be only letter and number</span>
+	  <div class="grad-container flex" ng-if="employee.qualification === 'graduate' || employee.qualification === 'postGraduate'">
+	  	<span class="grad-container-heading"> Grad </span>
+	  	<input type="text" ng-model="employee.gradCourse" ng-pattern="/^\w+(\s+\w+)*$/" name="empGradCourse" placeholder="Course" required />    
+	    <span class="error" ng-show="employeeForm.empGradCourse.$error.pattern">Grad course must be only letters</span>
 	    <span class="error" ng-show="employeeForm.empGradCourse.$error.required && !employeeForm.empGradCourse.$pristine">Grad Course is Required</span>
 
-	    <input type="text" ng-model="employee.gradUniversity" ng-pattern="/^[a-zA-Z]+$/" name="empGradUniversity" placeholder="University" required />    
-	    <span class="error" ng-show="employeeForm.empGradUniversity.$error.pattern">Grad university must be only letter and number</span>
+	    <input type="text" ng-model="employee.gradUniversity" ng-pattern="/^\w+(\s+\w+)*$/" name="empGradUniversity" placeholder="University" required />    
+	    <span class="error" ng-show="employeeForm.empGradUniversity.$error.pattern">Grad university must be only letters</span>
 	    <span class="error" ng-show="employeeForm.empGradUniversity.$error.required && !employeeForm.empGradUniversity.$pristine">Grad University is Required</span>
 
-	    <input type="text" name="empGradYear" ng-model="employee.gradYear" placeholder="Year" ng-pattern="/^[0-9]+$/" required/>
+	    <input type="text" name="empGradYear" ng-model="employee.gradYear" placeholder="Year" ng-pattern="/^[0-9]{4}$/" required/>
 			<span class="error" ng-show="employeeForm.empGradYear.$error.required && !employeeForm.empGradYear.$pristine">Grad year is required</span>
-			<span class="error" ng-show="employeeForm.empGradYear.$error.pattern">Grad year should be a number only </span>
+			<span class="error" ng-show="employeeForm.empGradYear.$error.pattern">Grad year should be a number only and should be of length 4 </span>
 	  </div>
 
-	  <div class="grad-container" ng-if="employee.qualification === 'postGraudate'">
-	  	<span> Post Graduation </span>
-	  	<input type="text" ng-model="employee.postGradCourse" ng-pattern="/^[a-zA-Z]+$/" name="empPostGradCourse" placeholder="Course" required />    
-	    <span class="error" ng-show="employeeForm.empPostGradCourse.$error.pattern">Post Grad course must be only letter and number</span>
+	  <div class="grad-container flex" ng-if="employee.qualification === 'postGraduate'">
+	  	<span class="grad-container-heading"> Post Graduation </span>
+	  	<input type="text" ng-model="employee.postGradCourse" ng-pattern="/^\w+(\s+\w+)*$/" name="empPostGradCourse" placeholder="Course" required />    
+	    <span class="error" ng-show="employeeForm.empPostGradCourse.$error.pattern">Post Grad course must be only letters</span>
 	    <span class="error" ng-show="employeeForm.empPostGradCourse.$error.required && !employeeForm.empPostGradCourse.$pristine">Post Grad Course is Required</span>
 
-	    <input type="text" ng-model="employee.postGradUniversity" ng-pattern="/^[a-zA-Z]+$/" name="empPostGradUniversity" placeholder="University" required />    
-	    <span class="error" ng-show="employeeForm.empPostGradUniversity.$error.pattern">Post Grad university must be only letter and number</span>
+	    <input type="text" ng-model="employee.postGradUniversity" ng-pattern="/^\w+(\s+\w+)*$/" name="empPostGradUniversity" placeholder="University" required />    
+	    <span class="error" ng-show="employeeForm.empPostGradUniversity.$error.pattern">Post Grad university must be only letters</span>
 	    <span class="error" ng-show="employeeForm.empPostGradUniversity.$error.required && !employeeForm.empPostGradUniversity.$pristine">Post Grad University is Required</span>
 
-	    <input type="text" name="postGradYear" ng-model="employee.postGradYear" placeholder="Year" ng-pattern="/^[0-9]+$/" required/>
+	    <input type="text" name="postGradYear" ng-model="employee.postGradYear" placeholder="Year" ng-pattern="/^[0-9]{4}$/" required/>
 			<span class="error" ng-show="employeeForm.postGradYear.$error.required && !employeeForm.postGradYear.$pristine">Post Grad year is required</span>
-			<span class="error" ng-show="employeeForm.postGradYear.$error.pattern">Post Grad year should be a number only </span>
+			<span class="error" ng-show="employeeForm.postGradYear.$error.pattern">Post Grad year should be a number only and should be of length 4</span>
 	  </div>
 		
 		<select ng-model="employee.city"
-	    ng-options="city in allCities" name="citySelect">
+	    ng-options="key as value for (key,value) in allCities" name="citySelect" required>
 	    <option value="">Select City</option>
 	  </select>
-	  <span class="error" ng-show="employeeForm.citySelect.$error.required">City is required</span>
+	  <span class="error" ng-show="employeeForm.citySelect.$error.required && !employeeForm.citySelect.$pristine">City is required</span>
 
-		<div class="other-city" ng-if="employee.city ==='Other'">
-		  <input type="text" ng-model="employee.otherCity" ng-pattern="/^[a-zA-Z]+$/" name="empOtherCity" placeholder="City: Other Case" required />    
-	    <span class="error" ng-show="employeeForm.empOtherCity.$error.pattern">City must be only letter and number</span>
+		<div class="other-city" ng-if="employee.city === 'other'">
+		  <input type="text" ng-model="employee.otherCity" ng-pattern="/^\w+(\s+\w+)*$/" name="empOtherCity" placeholder="City: Other Case" required />    
+	    <span class="error" ng-show="employeeForm.empOtherCity.$error.pattern">City must be only letters</span>
 	    <span class="error" ng-show="employeeForm.empOtherCity.$error.required && !employeeForm.empOtherCity.$pristine">City is Required</span>
 	  </div>
 
-	  <div ng-repeat="addressField in employee.address track by $index">
-      <input type="text" placeholder="Address line {{$index+1}}" ng-model="employee.address[$index]" name="addressField{{$index}}" required>
-      <span ng-show="employeeForm.addressField{{$index}}.$error.required && !employeeForm.addressField{{$index}}.$pristine">Address field is Required</span>
+	  <div class="address-container" ng-repeat="addressField in employee.address track by $index">
+      <label><input type="text" placeholder="Address line {{$index+1}}" ng-model="employee.address[$index]" name="addressField{{$index}}" required>
+      </label>
+      <span class="error" ng-show="employeeForm.addressField{{$index}}.$error.required && !employeeForm.addressField{{$index}}.$pristine">Address field is Required</span>
       <button ng-click="addAddressField()" ng-if="$index === $last">Add</button>
     </div>
 
     <input type="number" name="empPinCode" ng-model="employee.pinCode" placeholder="Pin Code" ng-pattern="/^[0-9]+$/" required/>
-		<span ng-show="employeeForm.empPinCode.$error.required && !employeeForm.empPinCode.$pristine">Pin code is required</span>
-		<span ng-show="employeeForm.empPinCode.$error.pattern">Pin code should be a number only </span>
+		<span class="error" ng-show="employeeForm.empPinCode.$error.required && !employeeForm.empPinCode.$pristine">Pin code is required</span>
+		<span class="error"ng-show="employeeForm.empPinCode.$error.pattern">Pin code should be a number only </span>
 	
 		<div class="radio-group">
 		 	<label>Full Time &nbsp;<input type="radio" ng-model="employee.jobType" name="empJobType" value="fullTime" required /></label>
 		 	<label>Part Time &nbsp;<input type="radio" ng-model="employee.jobType" name="empJobType" value="partTime" required /></label>
 		 	<label>Casual Time &nbsp;<input type="radio" ng-model="employee.jobType" name="empJobType" value="casual" required /></label>
 		</div>
-		<span ng-show="employeeForm.empJobType.$error.required && !employeeForm.empJobType.$pristine">Job type is required</span>
+		<span class="error" class="error" ng-show="employeeForm.empJobType.$error.required && !employeeForm.empJobType.$pristine">Job type is required</span>
 
 		<div class="job-type-container" ng-if="employee.jobType ==='partTime'">
 			<span> Working Hours</span>
@@ -98,12 +99,12 @@
 				<input ng-model="employee.endingHours" type="time" name="empEndingHours" placeholder="HH:mm" min="{{employee.startingHours}}" required >
 			</div>
 		</div>
-		<span ng-show="employeeForm.empStartingHours.$error.required && !employeeForm.empStartingHours.$pristine">Starting hours are required</span>
-		<span ng-show="employeeForm.empStartingHours.$error.max && !employeeForm.empStartingHours.$pristine">Starting hours could not be more than ending hours</span>
-		<span ng-show="employeeForm.empStartingHours.$error.time && !employeeForm.empStartingHours.$pristine">Not a valid time</span>
-		<span ng-show="employeeForm.empEndingHours.$error.required  && !employeeForm.empEndingHours.$pristine">Ending hours are required</span>
-		<span ng-show="employeeForm.empEndingHours.$error.min  && !employeeForm.empEndingHours.$pristine">Ending hours could not be less than starting hours</span>
-		<span ng-show="employeeForm.empEndingHours.$error.time  && !employeeForm.empEndingHours.$pristine">Not a valid time</span>
+		<span class="error" ng-show="employeeForm.empStartingHours.$error.required && !employeeForm.empStartingHours.$pristine">Starting hours are required</span>
+		<span class="error" ng-show="employeeForm.empStartingHours.$error.max && !employeeForm.empStartingHours.$pristine">Starting hours could not be more than ending hours</span>
+		<span class="error" ng-show="employeeForm.empStartingHours.$error.time && !employeeForm.empStartingHours.$pristine">Not a valid time</span>
+		<span class="error" ng-show="employeeForm.empEndingHours.$error.required  && !employeeForm.empEndingHours.$pristine">Ending hours are required</span>
+		<span class="error" ng-show="employeeForm.empEndingHours.$error.min  && !employeeForm.empEndingHours.$pristine">Ending hours could not be less than starting hours</span>
+		<span class="error" ng-show="employeeForm.empEndingHours.$error.time  && !employeeForm.empEndingHours.$pristine">Not a valid time</span>
 
 		<div class="job-type-container" ng-if="employee.jobType ==='casual'">
 			<span> Contract Dates</span>
@@ -113,16 +114,16 @@
 				<input ng-model="employee.endingDate" type="date" name="empEndingDate" min="{{employee.startingDate}}" required >
 			</div>
 		</div>
-		<span ng-show="employeeForm.empStartingDate.$error.required && !employeeForm.empStartingDate.$pristine">Starting hours are required</span>
-		<span ng-show="employeeForm.empStartingDate.$error.max && !employeeForm.empStartingDate.$pristine">Starting hours could not be more than ending hours</span>
-		<span ng-show="employeeForm.empStartingDate.$error.date && !employeeForm.empStartingDate.$pristine">Not a valid date</span>
-		<span ng-show="employeeForm.empEndingDate.$error.required && !employeeForm.empEndingDate.$pristine">Ending hours are required</span>
-		<span ng-show="employeeForm.empEndingDate.$error.min && !employeeForm.empEndingDate.$pristine">Ending hours could not be less than starting hours</span>
-		<span ng-show="employeeForm.empEndingDate.$error.date && !employeeForm.empEndingDate.$pristine">Not a valid date</span>
+		<span class="error" ng-show="employeeForm.empStartingDate.$error.required && !employeeForm.empStartingDate.$pristine">Starting hours are required</span>
+		<span class="error" ng-show="employeeForm.empStartingDate.$error.max && !employeeForm.empStartingDate.$pristine">Starting hours could not be more than ending hours</span>
+		<span class="error" ng-show="employeeForm.empStartingDate.$error.date && !employeeForm.empStartingDate.$pristine">Not a valid date</span>
+		<span class="error" ng-show="employeeForm.empEndingDate.$error.required && !employeeForm.empEndingDate.$pristine">Ending hours are required</span>
+		<span class="error" ng-show="employeeForm.empEndingDate.$error.min && !employeeForm.empEndingDate.$pristine">Ending hours could not be less than starting hours</span>
+		<span class="error" ng-show="employeeForm.empEndingDate.$error.date && !employeeForm.empEndingDate.$pristine">Not a valid date</span>
 		
 		<div class="action-buttons">
 		 	<button type="submit" ng-disabled="!employeeForm.$valid">Submit</button>   
-			<button type="button" ng-click="cancelForm()">Cancel</button>   
+			<button type="button"><a ui-sref="dashboard.home">Cancel</a></button>   
 		</div>
 	</form>
 </div>

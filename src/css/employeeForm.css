@@ -17,9 +17,29 @@
   margin: 5px 0;
 }
 
+.form-container .employee-form .grad-container {
+  border: 1px solid #dedede;
+  width: 25%;
+  flex-wrap: wrap;
+  padding: 10px;
+  margin: 2rem;
+}
+
+.form-container .employee-form .grad-container input{
+  width: 100%;
+}
+
+.form-container .employee-form .grad-container .grad-container-heading {
+ 	width: 100%;
+}
+
 .form-container .employee-form .error {
   color: #F00;
   font-size: 1rem;
+}
+
+.form-container .employee-form .other-city {
+  margin: 2rem;
 }
 
 .form-container .employee-form .radio-group label {
@@ -35,6 +55,11 @@
   width: 25%;
   padding: 5px;
   margin: 5px 0;
+  margin-left: 2rem;
+}
+
+.form-container .employee-form .job-type-container input {
+  width: 100%;
 }
 
 .form-container .employee-form .job-type-container .time-selector {

@@ -15,6 +15,9 @@ html {
   font-family: 'Roboto';
 }
 
+a {
+  text-decoration: none;
+}
 
 .clearfix:before,
 .clearfix:after {
@@ -34,9 +37,21 @@ html {
   width: 100%;
 }
 
+.flex {
+  display: -webkit-box;      
+  display: -moz-box;        
+  display: -ms-flexbox;      
+  display: -webkit-flex;     
+  display: flex; 
+}
+
 input:disabled,
 button:disabled {
   cursor: not-allowed;
+}
+
+button[type="submit"] {
+  cursor: pointer;
 }
 
 input:focus {

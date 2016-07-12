@@ -5,7 +5,8 @@
     .module('dashboard', [
       'home',
       'adminActions',
-      'services'
+      'services',
+      'common'
       ])
     .config(['$stateProvider', function routerConfig($stateProvider) {
       $stateProvider
