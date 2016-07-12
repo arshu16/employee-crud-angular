@@ -21,6 +21,7 @@
         }
       } else {
         $scope.employee = sharedEmployee.employee;
+        id = $scope.employee.id;
       }
 
       function getEmployee() {
