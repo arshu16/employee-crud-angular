@@ -1,0 +1,44 @@
+.form-container {
+	padding: 5px;
+	font-size: 1.3rem;
+}
+
+.form-container .form-heading {
+	font-size: 1.5rem;
+}
+
+.form-container .employee-form {
+	padding: 1rem 0;
+}
+
+.form-container .employee-form input,
+.form-container .employee-form select {
+	display: block;
+  margin: 5px 0;
+}
+
+.form-container .employee-form .error {
+  color: #F00;
+  font-size: 1rem;
+}
+
+.form-container .employee-form .radio-group label {
+  margin: 5px;
+}
+
+.form-container .employee-form .radio-group input {
+	display: inline;
+}
+
+.form-container .employee-form .job-type-container {
+  border: 1px solid #dedede;
+  width: 25%;
+  padding: 5px;
+  margin: 5px 0;
+}
+
+.form-container .employee-form .job-type-container .time-selector {
+	align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}

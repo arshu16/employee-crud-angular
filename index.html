@@ -6,11 +6,18 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="src/css/index.css">
   </head>
   <body >
     <div class="app-container" ui-view></div>
     <script type="text/javascript" src="libs/angular.min.js"></script>
     <script type="text/javascript" src="libs/angular-ui-router.min.js"></script>
+
+    <!-- SERVICES MODULE -->
+    <script type="text/javascript" src="src/app/services/service.module.js"></script>
+    <script type="text/javascript" src="src/app/services/employeeRecordsCache.js"></script>
+    <script type="text/javascript" src="src/app/services/utils.js"></script>
+    <!-- @@@@@@@@@@@@@@@ -->
     
     <!-- ADMIN ACTIONS MODULE -->
     <script type="text/javascript" src="src/app/dashboard/adminActions/adminActions.module.js"></script>
@@ -21,6 +28,7 @@
     <script type="text/javascript" src="src/app/dashboard/home/home.module.js"></script>
     <script type="text/javascript" src="src/app/dashboard/home/home.controller.js"></script>
     <!-- @@@@@@@@@@@ --> 
+
     <!-- DASHBOARD MODULE -->
     <script type="text/javascript" src="src/app/dashboard/dashboard.module.js"></script>
     <!-- @@@@@@@@@@@@@@@@ -->

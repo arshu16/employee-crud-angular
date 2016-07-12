@@ -1,0 +1,56 @@
+.dashboard-container .container {
+	padding: 5px;
+  border-bottom: 1px solid #fFF;
+  background: #dedede;
+}
+
+.dashboard-container .container h3 {
+	margin: 0;
+  font-weight: 300;
+}
+
+.dashboard-container .employee-list-container {
+	border-bottom: 1px solid #fFF;
+	background: #dedede;
+}
+
+.dashboard-container .employee-list-container {
+	border-bottom: 1px solid #fFF;
+	background: #dedede;
+}
+
+.dashboard-container .employee-list-container .row {
+	width: 100%;
+  text-align: center;
+  justify-content: flex-start;
+  color: #FFF;
+  padding: 5px;
+  background: #888;
+}
+
+.dashboard-container .employee-list-container .row.first-row{
+	background: #333;
+}
+
+.dashboard-container .employee-list-container .row span
+{
+  padding: 0 5px;
+  width: 14%;
+}
+
+.dashboard-container .employee-list-container .row button {
+	padding: 0 5px;
+	margin: 0 auto;
+}
+
+.dashboard-container .employee-list-container .row.first-row span {
+	border-right: 1px solid #FFF;
+}
+
+.dashboard-container .employee-list-container .row.first-row span:first-child {
+  border-left: 1px solid #FFF;
+}
+
+.dashboard-container .employee-list-container .row.first-row span:last-child {
+  border-right: 1px solid #FFF;
+}
