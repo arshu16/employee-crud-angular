@@ -1,5 +1,6 @@
 @import url('dashboard.css');
 @import url('employeeForm.css');
+@import url('details.css');
 
 *, *:before, *:after{
   -webkit-box-sizing: inherit;

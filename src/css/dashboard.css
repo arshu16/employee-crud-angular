@@ -26,6 +26,7 @@
   color: #FFF;
   padding: 5px;
   background: #888;
+  cursor: pointer;
 }
 
 .dashboard-container .employee-list-container .row.first-row{

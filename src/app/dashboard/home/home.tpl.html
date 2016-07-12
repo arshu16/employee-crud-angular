@@ -19,14 +19,14 @@
       <span> Modify Employee </span>
       <span> Delete Employee </span>
     </div>
-    <div class="row inline-flex" ng-repeat="employee in searchedEmployeeList track by $index">
+    <div class="row inline-flex" ng-click="showDetails(employee)" ng-repeat="employee in searchedEmployeeList track by $index">
       <span>{{employee.id}}</span>
       <span>{{employee.name}}</span>
       <span>{{employee.designation}} </span>
       <span>{{employee.contactNumber}}</span>
       <span>{{employee.email}}</span>
-      <button type="button" ng-click="modifyEmp(employee)"> Modify</button>
-      <button type="button" ng-click="deleteEmp(employee)"> Delete</button>
+      <button type="button" ng-click="modifyEmp($event, employee)"> Modify</button>
+      <button type="button" ng-click="deleteEmp($event, employee)"> Delete</button>
     </div>
   </div>
 </div>

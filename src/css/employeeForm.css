@@ -36,6 +36,8 @@
 .form-container .employee-form .error {
   color: #F00;
   font-size: 1rem;
+  display: block;
+  width: 100%;
 }
 
 .form-container .employee-form .other-city {

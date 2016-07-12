@@ -1,0 +1,22 @@
+.details-section {
+	font-size: 1.4rem;
+  padding: 20px;
+  text-transform: uppercase;
+}
+
+.details-section h3 {
+	margin: 0;
+	font-size: 2rem;
+}
+
+.details-section .info-container {
+	padding: 5px 0;
+}
+
+.details-section .info-container .info-heading{
+	font-weight: bold;
+}
+
+.details-section .info-container .more-info{
+	margin: 0 20px;
+}

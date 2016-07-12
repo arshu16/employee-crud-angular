@@ -9,19 +9,19 @@
     <span class="error" ng-show="employeeForm.empEmail.$error.email">Enter a Valid Email</span>
     <span class="error" ng-show="employeeForm.empEmail.$error.required && !employeeForm.empEmail.$pristine">Email is Required</span>
 
-    <input type="text" ng-model="employee.name" ng-pattern="/^\w+(\s+\w+)*$/" name="empName" placeholder="Name" required />    
+    <input type="text" ng-model="employee.name" ng-pattern="/^\w+(\.*\s*\w+\.*\s*)*$/" name="empName" placeholder="Name" required />    
     <span class="error" ng-show="employeeForm.empName.$error.pattern">Name must be only letters</span>
     <span class="error" ng-show="employeeForm.empName.$error.required && !employeeForm.empName.$pristine">Name is Required</span>
 
-    <input type="text" name="empContactNumber" ng-model="employee.contactNumber" placeholder="Contact Number" ng-pattern="/^[0-9]+$/" required/>
+    <input type="text" name="empContactNumber" ng-model="employee.contactNumber" placeholder="Contact Number" ng-pattern="/^[0-9]{10}$/" required/>
 		<span class="error" ng-show="employeeForm.empContactNumber.$error.required && !employeeForm.empContactNumber.$pristine">Contact is required</span>
-		<span class="error" ng-show="employeeForm.empContactNumber.$error.pattern">Phone should be a number only </span>
+		<span class="error" ng-show="employeeForm.empContactNumber.$error.pattern">Phone should be a number only and be of 10 numbers </span>
 
-		<input type="text" ng-model="employee.department" ng-pattern="/^\w+(\s+\w+)*$/" name="empDepartment" placeholder="Department" required />    
+		<input type="text" ng-model="employee.department" ng-pattern="/^\w+(\.*\s*\w+\.*\s*)*$/" name="empDepartment" placeholder="Department" required />    
     <span class="error" ng-show="employeeForm.empDepartment.$error.pattern">Department must be only letters</span>
     <span class="error" ng-show="employeeForm.empDepartment.$error.required && !employeeForm.empDepartment.$pristine">Department is Required</span>
 
-    <input type="text" ng-model="employee.designation" ng-pattern="/^\w+(\s+\w+)*$/" name="empDesignation" placeholder="Designation" required />    
+    <input type="text" ng-model="employee.designation" ng-pattern="/^\w+(\.*\s*\w+\.*\s*)*$/" name="empDesignation" placeholder="Designation" required />    
     <span class="error" ng-show="employeeForm.empDesignation.$error.pattern">Designation must be only letters</span>
     <span class="error" ng-show="employeeForm.empDesignation.$error.required && !employeeForm.empDesignation.$pristine">Designation is Required</span>
 
@@ -29,15 +29,15 @@
 	    ng-options="key as value for (key,value) in allQualifications" name="qualificationSelect" required>
 	    <option value="">Select Qualification</option>
 	  </select>
-	  <span class="error" ng-show="employeeForm.qualificationSelect.$error.required  && !employeeForm.qualificationSelect.$pristine"">Qualification is required</span>
+	  <span class="error" ng-show="employeeForm.qualificationSelect.$error.required">Qualification is required</span>
 
 	  <div class="grad-container flex" ng-if="employee.qualification === 'graduate' || employee.qualification === 'postGraduate'">
 	  	<span class="grad-container-heading"> Grad </span>
-	  	<input type="text" ng-model="employee.gradCourse" ng-pattern="/^\w+(\s+\w+)*$/" name="empGradCourse" placeholder="Course" required />    
+	  	<input type="text" ng-model="employee.gradCourse" ng-pattern="/^\w+(\.*\s*\w+\.*\s*)*$/" name="empGradCourse" placeholder="Course" required />    
 	    <span class="error" ng-show="employeeForm.empGradCourse.$error.pattern">Grad course must be only letters</span>
 	    <span class="error" ng-show="employeeForm.empGradCourse.$error.required && !employeeForm.empGradCourse.$pristine">Grad Course is Required</span>
 
-	    <input type="text" ng-model="employee.gradUniversity" ng-pattern="/^\w+(\s+\w+)*$/" name="empGradUniversity" placeholder="University" required />    
+	    <input type="text" ng-model="employee.gradUniversity" ng-pattern="/^\w+(\.*\s*\w+\.*\s*)*$/" name="empGradUniversity" placeholder="University" required />    
 	    <span class="error" ng-show="employeeForm.empGradUniversity.$error.pattern">Grad university must be only letters</span>
 	    <span class="error" ng-show="employeeForm.empGradUniversity.$error.required && !employeeForm.empGradUniversity.$pristine">Grad University is Required</span>
 
@@ -48,11 +48,11 @@
 
 	  <div class="grad-container flex" ng-if="employee.qualification === 'postGraduate'">
 	  	<span class="grad-container-heading"> Post Graduation </span>
-	  	<input type="text" ng-model="employee.postGradCourse" ng-pattern="/^\w+(\s+\w+)*$/" name="empPostGradCourse" placeholder="Course" required />    
+	  	<input type="text" ng-model="employee.postGradCourse" ng-pattern="/^\w+(\.*\s*\w+\.*\s*)*$/" name="empPostGradCourse" placeholder="Course" required />    
 	    <span class="error" ng-show="employeeForm.empPostGradCourse.$error.pattern">Post Grad course must be only letters</span>
 	    <span class="error" ng-show="employeeForm.empPostGradCourse.$error.required && !employeeForm.empPostGradCourse.$pristine">Post Grad Course is Required</span>
 
-	    <input type="text" ng-model="employee.postGradUniversity" ng-pattern="/^\w+(\s+\w+)*$/" name="empPostGradUniversity" placeholder="University" required />    
+	    <input type="text" ng-model="employee.postGradUniversity" ng-pattern="/^\w+(\.*\s*\w+\.*\s*)*$/" name="empPostGradUniversity" placeholder="University" required />    
 	    <span class="error" ng-show="employeeForm.empPostGradUniversity.$error.pattern">Post Grad university must be only letters</span>
 	    <span class="error" ng-show="employeeForm.empPostGradUniversity.$error.required && !employeeForm.empPostGradUniversity.$pristine">Post Grad University is Required</span>
 
@@ -61,14 +61,14 @@
 			<span class="error" ng-show="employeeForm.postGradYear.$error.pattern">Post Grad year should be a number only and should be of length 4</span>
 	  </div>
 		
-		<select ng-model="employee.city"
+	  <select ng-model="employee.city"
 	    ng-options="key as value for (key,value) in allCities" name="citySelect" required>
 	    <option value="">Select City</option>
 	  </select>
-	  <span class="error" ng-show="employeeForm.citySelect.$error.required && !employeeForm.citySelect.$pristine">City is required</span>
+	  <span class="error" ng-show="employeeForm.citySelect.$error.required">City is required</span>
 
 		<div class="other-city" ng-if="employee.city === 'other'">
-		  <input type="text" ng-model="employee.otherCity" ng-pattern="/^\w+(\s+\w+)*$/" name="empOtherCity" placeholder="City: Other Case" required />    
+		  <input type="text" ng-model="employee.otherCity" ng-pattern="/^\w+(\.*\s*\w+\.*\s*)*$/" name="empOtherCity" placeholder="City: Other Case" required />    
 	    <span class="error" ng-show="employeeForm.empOtherCity.$error.pattern">City must be only letters</span>
 	    <span class="error" ng-show="employeeForm.empOtherCity.$error.required && !employeeForm.empOtherCity.$pristine">City is Required</span>
 	  </div>
@@ -123,7 +123,7 @@
 		
 		<div class="action-buttons">
 		 	<button type="submit" ng-disabled="!employeeForm.$valid">Submit</button>   
-			<button type="button"><a ui-sref="dashboard.home">Cancel</a></button>   
+			<button type="button" ng-click="goToHome()">Cancel</button>   
 		</div>
 	</form>
 </div>

@@ -15,7 +15,7 @@
         gradCourse: 'B.Tech.',
         gradUniversity: 'JIIT',
         gradYear: 2015,
-        city: 'Delhi',
+        city: 'delhi',
         address: [
           'GG-3/34, Vikaspuri',
           'New Delhi'

@@ -1,0 +1,71 @@
+<div class="details-section">
+	<h3 ng-if="isConfirmPage">Confirmation:</h3>
+	<h3 ng-if="!isConfirmPage">Details:</h3>
+	<div class="info-container">
+		<span class="info-heading">EMPLOYEE ID: &nbsp; </span> 
+		<span>{{employee.id}}</span>
+	</div>
+	<div class="info-container">
+		<span class="info-heading">EMAIL ID: &nbsp; </span> 
+		<span>{{employee.email}}</span>
+	</div>
+	<div class="info-container">
+		<span class="info-heading">NAME: &nbsp; </span> 
+		<span>{{employee.name}}</span>
+	</div>
+	<div class="info-container">
+		<span class="info-heading">PHONE: &nbsp; </span> 
+		<span>{{employee.contactNumber}}</span>
+	</div>
+	<div class="info-container">
+		<span class="info-heading">CITY: &nbsp; </span> 
+		<span ng-if="employee.city !== 'other' ">{{employee.city}}</span>
+		<span ng-if="employee.city === 'other' ">{{employee.otherCity}}</span>
+	</div>
+	<div class="info-container">
+		<span class="info-heading">DEPARTMENT: &nbsp; </span> 
+		<span>{{employee.department}}</span>
+	</div>
+	<div class="info-container">
+		<span class="info-heading">DESIGNATION: &nbsp; </span> 
+		<span>{{employee.designation}}</span>
+	</div>
+	<div class="info-container">
+		<span class="info-heading">QUALIFICATION: &nbsp; </span> 
+		<span>{{qualificationMap[employee.qualification]}}</span>
+		<div ng-if="employee.qualification=='postGraduate'" class="more-info">
+			<!-- <div>Post Graduation </div> -->
+			<span>{{employee.postGradCourse}}, &nbsp;</span>
+			<span>{{employee.postGradUniversity}}, &nbsp;</span>
+			<span>{{employee.postGradYear}}</span>
+		</div>
+		<div class="more-info">
+			<!-- <div>Graduation </div> -->
+			<span>{{employee.gradCourse}}, &nbsp;</span>
+			<span>{{employee.gradUniversity}}, &nbsp;</span>
+			<span>{{employee.gradYear}}</span>
+		</div>
+	</div>
+	<div class="info-container">
+		<span class="info-heading">EMPLOYMENT: &nbsp; </span> 
+		<span>{{employmentTypeMap[employee.jobType]}}</span>
+		<span ng-if="employee.jobType=='partTime'">
+			(<span>{{employee.empStartingHours}}</span> &nbsp; TO &nbsp; <span>{{employee.empEndingHours}}</span>)
+		</span>
+		<span ng-if="employee.jobType=='casual'">
+			(<span>{{employee.empStartingDate}}</span> &nbsp; TO &nbsp; <span>{{employee.empEndingDate}}</span>)
+		</span>
+	</div>
+	<div class="info-container">
+		<span class="info-heading">ADDRESS: &nbsp; </span> 
+		<div class="more-info">
+			<span ng-repeat="address in employee.address track by $index">
+				{{address}} <span ng-if="$index !== $last">, &nbsp;</span>
+			</span>
+		</div>
+	</div>
+	<div class="action-buttons">
+		<button ng-if="isConfirmPage" ng-click="confirmEmployee()">Confirm</button>
+		<button ng-click="goBack()">Back</button>
+	</div>
+</div>

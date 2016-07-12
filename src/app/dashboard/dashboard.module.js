@@ -5,6 +5,7 @@
     .module('dashboard', [
       'home',
       'adminActions',
+      'details',
       'services',
       'common'
       ])

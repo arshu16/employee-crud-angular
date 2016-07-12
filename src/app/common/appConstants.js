@@ -20,6 +20,20 @@
         QUALIFICATION: {
           graduate: 'Graduate',
           postGraduate: 'Post Graduate'
+        },
+        NEW_FORM_DATA: {
+          address: [
+            ''
+          ]
+        },
+        QUALIFICATION_MAP: {
+          graduate: 'GRADUATE',
+          postGraduate: 'POST GRADUATE'
+        },
+        EMPLOYMENT_TYPE_MAP: {
+          fullTime: 'FULL TIME',
+          partTime: 'PART TIME',
+          casual: 'CASUAL'
         }
       };
     });
