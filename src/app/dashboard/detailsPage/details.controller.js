@@ -68,7 +68,7 @@
       }
 
       $scope.confirmEmployee = function() {
-        if(id) {
+        if(id && !$scope.isConfirmPage) {
           modifyExistingEmp();
         } else {
           createNewEmployee();

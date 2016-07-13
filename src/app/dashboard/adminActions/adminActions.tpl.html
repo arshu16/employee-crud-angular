@@ -29,7 +29,7 @@
 	    ng-options="key as value for (key,value) in allQualifications" name="qualificationSelect" required>
 	    <option value="">Select Qualification</option>
 	  </select>
-	  <span class="error" ng-show="employeeForm.qualificationSelect.$error.required">Qualification is required</span>
+	  <span class="error" ng-show="employeeForm.qualificationSelect.$error.required && !employeeForm.qualificationSelect.$pristine">Qualification is required</span>
 
 	  <div class="grad-container flex" ng-if="employee.qualification === 'graduate' || employee.qualification === 'postGraduate'">
 	  	<span class="grad-container-heading"> Grad </span>
@@ -65,7 +65,7 @@
 	    ng-options="key as value for (key,value) in allCities" name="citySelect" required>
 	    <option value="">Select City</option>
 	  </select>
-	  <span class="error" ng-show="employeeForm.citySelect.$error.required">City is required</span>
+	  <span class="error" ng-show="employeeForm.citySelect.$error.required && !employeeForm.citySelect.$pristine">City is required</span>
 
 		<div class="other-city" ng-if="employee.city === 'other'">
 		  <input type="text" ng-model="employee.otherCity" ng-pattern="/^\w+(\.*\s*\w+\.*\s*)*$/" name="empOtherCity" placeholder="City: Other Case" required />    
@@ -95,7 +95,7 @@
 			<span> Working Hours</span>
 			<div class="time-selector inline-flex">
 				<input ng-model="employee.startingHours" type="time" name="empStartingHours" placeholder="HH:mm" max="{{employee.endingHours}}" required >
-				<span> TO </span>
+				<span>&nbsp; TO &nbsp;</span>
 				<input ng-model="employee.endingHours" type="time" name="empEndingHours" placeholder="HH:mm" min="{{employee.startingHours}}" required >
 			</div>
 		</div>
@@ -109,8 +109,9 @@
 		<div class="job-type-container" ng-if="employee.jobType ==='casual'">
 			<span> Contract Dates</span>
 			<div class="time-selector inline-flex">
-				<input ng-model="employee.startingDate" type="date" name="empStartingDate" max="{{employee.endingDate}}" required >
-				<span> TO </span>
+				<input ng-model="employee.startingDate" type="date" name="empStartingDate" max="{{employee.endingDate}}" required
+				>
+				<span>&nbsp; TO &nbsp;</span>
 				<input ng-model="employee.endingDate" type="date" name="empEndingDate" min="{{employee.startingDate}}" required >
 			</div>
 		</div>

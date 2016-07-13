@@ -11,12 +11,27 @@
     var employeeList = employeeRecordsCache.getEmployeeRecords();
 
     if($stateParams.id) {
+      parseDateOrTime();
       $scope.employee = utils.quickCopy(getEmployee(+$stateParams.id));
     } else {
       if(Object.keys(sharedEmployee.employee).length > 1) {
+        parseDateOrTime();
         $scope.employee = sharedEmployee.employee;
       } else {
         $scope.employee = utils.quickCopy(appConstants.NEW_FORM_DATA);
+      }
+    }
+
+    function parseDateOrTime() {
+      switch(sharedEmployee.employee.jobType) {
+        case 'casual': 
+          sharedEmployee.employee.startingDate = new Date(sharedEmployee.employee.startingDate);
+          sharedEmployee.employee.endingDate = new Date(sharedEmployee.employee.endingDate);
+          break;
+        case 'partTime': 
+          sharedEmployee.employee.startingHours = new Date(sharedEmployee.employee.startingHours);
+          sharedEmployee.employee.endingHours = new Date(sharedEmployee.employee.endingHours);
+          break;
       }
     }
 
